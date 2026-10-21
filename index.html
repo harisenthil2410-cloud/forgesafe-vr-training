@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101820">
+<title>ForgeSafe VR | Industrial Safety Training</title>
+<style>
+:root{--bg:#0d141b;--panel:#151f29;--panel2:#1b2935;--line:#2b3b49;--text:#edf4f8;--muted:#a5b5c2;--cyan:#51d6d0;--amber:#ffbf47;--red:#ff626b;--green:#72e0a1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 Inter,Segoe UI,Arial,sans-serif}button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:10px 14px;font-weight:700;transition:.18s}button:hover{filter:brightness(1.08);transform:translateY(-1px)}button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}.primary{background:var(--cyan);color:#071416}.secondary{background:#293947;color:var(--text);border:1px solid #3b4d5c}.danger{background:#4b252b;color:#ffdfe1;border:1px solid #713840}.shell{max-width:1500px;margin:auto;padding:18px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px}.brand{display:flex;gap:12px;align-items:center}.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#52ded4,#168b91);display:grid;place-items:center;color:#092125;font-size:22px;font-weight:900}.brand h1{font-size:18px;letter-spacing:.06em;margin:0}.brand p{color:var(--muted);margin:2px 0 0;font-size:12px}.status{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}.dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 10px #72e0a166}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px}.stage-wrap,.panel{border:1px solid var(--line);background:var(--panel);border-radius:16px;overflow:hidden}.stage-head{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}.stage-head h2{margin:0;font-size:15px}.stage-head p{margin:3px 0 0;color:var(--muted);font-size:12px}.pill{font-size:11px;border:1px solid #3a4c59;background:#1d2a35;color:#b9cbd6;padding:5px 9px;border-radius:999px;white-space:nowrap}#scene{display:block;width:100%;height:min(66vh,650px);min-height:420px;background:#101b24;cursor:crosshair;outline:none}.scene-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.keys{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.key{border:1px solid #40505e;background:#202d38;padding:2px 6px;border-radius:5px;color:#e8f0f5;font-size:11px}.side{display:flex;flex-direction:column;gap:14px}.panel{padding:16px}.panel h3{margin:0 0 10px;font-size:14px}.panel p{margin:0;color:var(--muted);font-size:13px}.progress-row{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin:12px 0 7px}.progress{height:7px;background:#293743;border-radius:10px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:var(--cyan);transition:width .25s}.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.metric{background:var(--panel2);border:1px solid #293b48;padding:12px;border-radius:11px}.metric small{display:block;color:var(--muted);font-size:11px}.metric strong{font-size:24px;display:block;margin-top:4px}.hazard-list{display:flex;flex-direction:column;gap:8px}.hazard-item{display:flex;gap:10px;align-items:center;padding:10px;background:var(--panel2);border:1px solid #2b3b48;border-radius:10px}.hazard-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:9px;background:#392e1d;font-size:17px;flex-shrink:0}.hazard-item strong{display:block;font-size:12px}.hazard-item small{color:var(--muted);font-size:11px}.hazard-item .state{margin-left:auto;font-size:10px;color:var(--amber);white-space:nowrap}.hazard-item.done .state{color:var(--green)}.selected-card{background:#132a30;border:1px solid #28666a;border-radius:12px;padding:13px;margin-top:10px}.selected-card h4{margin:0 0 6px;font-size:14px}.selected-card p{color:#c0d4dc}.selected-card .tip{margin-top:10px;color:#8fe6df;font-size:12px}.action-row{display:flex;gap:8px;margin-top:12px}.action-row button{flex:1}.tabs{display:flex;gap:6px;margin-bottom:12px}.tab{flex:1;padding:8px 6px;background:#202d38;border:1px solid #344754;color:var(--muted);font-size:12px}.tab.active{background:#17464a;color:#cffffb;border-color:#287c7d}.content{display:none}.content.active{display:block}.instruction{display:flex;gap:9px;margin:10px 0;color:#c4d1da;font-size:12px}.num{width:22px;height:22px;border-radius:7px;background:#273945;color:var(--cyan);display:grid;place-items:center;flex-shrink:0;font-weight:800}.quiz-q{font-size:14px;color:var(--text);margin-bottom:12px}.answer{display:block;width:100%;text-align:left;margin:7px 0;background:#202d38;color:#dce7ed;border:1px solid #354856;font-size:12px}.answer.chosen{border-color:var(--cyan);background:#16383b}.answer.correct{border-color:var(--green);background:#16372c}.answer.wrong{border-color:var(--red);background:#3d242a}.feedback{font-size:12px;margin-top:9px;color:var(--muted)}.overlay{position:fixed;inset:0;background:#071017d9;display:grid;place-items:center;padding:20px;z-index:10}.modal{max-width:520px;width:100%;background:#15212b;border:1px solid #3a4c59;border-radius:18px;padding:26px;box-shadow:0 24px 80px #0008}.modal h2{margin:0 0 8px;font-size:23px}.modal p{color:var(--muted);font-size:14px}.modal ul{color:#cbd8e0;font-size:13px;padding-left:20px}.modal-actions{display:flex;gap:9px;margin-top:18px;flex-wrap:wrap}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1c3038;border:1px solid #3a6c70;color:#d9fffb;padding:10px 15px;border-radius:10px;z-index:20;display:none;box-shadow:0 8px 25px #0005;font-size:13px}.tiny{font-size:11px;color:var(--muted)}.full{width:100%;margin-top:10px}.achievement-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}.achievement{background:#202d38;border:1px solid #344754;border-radius:10px;padding:10px 6px;text-align:center;opacity:.48;filter:grayscale(1)}.achievement.unlocked{opacity:1;filter:none;border-color:#398b72;background:#17352f}.achievement .medal{font-size:23px;display:block;margin-bottom:5px}.achievement strong{display:block;font-size:10px}.achievement small{display:block;font-size:10px;color:var(--muted);margin-top:3px}.best-score{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:10px 12px;background:#102b30;border:1px solid #28575b;border-radius:10px;font-size:12px}.best-score strong{font-size:18px;color:var(--cyan)}.drill-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.drill-stat{background:#202d38;border:1px solid #344754;border-radius:10px;padding:10px}.drill-stat small{display:block;color:var(--muted);font-size:11px}.drill-stat strong{display:block;font-size:21px;margin-top:3px}.drill-status{padding:11px;border-radius:10px;border:1px solid #344754;background:#202d38;color:#cbd8e0;font-size:12px;margin-top:10px}.drill-status.good{border-color:#398b72;background:#17352f;color:#baf5d4}.drill-status.bad{border-color:#8e4249;background:#3b2228;color:#ffd1d5}.hidden{display:none!important}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.side .panel:last-child{grid-column:1/-1}#scene{height:56vh;min-height:360px}}
+@media(max-width:620px){.shell{padding:10px}.topbar{align-items:flex-start}.status{display:none}.side{display:flex}.stage-head{align-items:flex-start;flex-direction:column}#scene{min-height:340px;height:52vh}.scene-foot{font-size:11px}.brand h1{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="logo">F</div><div><h1>FORGESAFE <span style="color:var(--cyan)">VR</span></h1><p>INDUSTRIAL WORKFORCE TRAINING SIMULATOR</p></div></div>
+    <div class="status"><span class="dot"></span> Simulation ready <span class="pill">3D BROWSER MODE</span></div>
+  </header>
+  <main class="layout">
+    <section class="stage-wrap">
+      <div class="stage-head"><div><h2>ForgeSafe · Factory and outdoor grounds</h2><p>Inspect hazards, then click the emergency exit door to step outside.</p></div><span class="pill" id="modePill">EXPLORATION MODE</span></div>
+      <canvas id="scene" tabindex="0" aria-label="Interactive 3D factory floor. Click highlighted hazards to inspect them."></canvas>
+      <div class="scene-foot"><div class="keys"><span>Move</span><span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span><span>·</span><span>Look</span><span class="key">Mouse drag</span><span>·</span><span>Inspect</span><span class="key">Click hazard</span></div><div>Tip: click a hazard area or use the list. Click the exit door to open it.</div></div>
+    </section>
+    <aside class="side">
+      <section class="panel">
+        <h3>Training progress</h3>
+        <div class="metric-grid"><div class="metric"><small>Hazards found</small><strong id="foundCount">0/4</strong></div><div class="metric"><small>Training score</small><strong id="score">0%</strong></div></div>
+        <div class="progress-row"><span>Inspection progress</span><span id="progressText">0%</span></div><div class="progress"><span id="progressBar"></span></div>
+        <button class="primary full" id="startBtn">Start / Resume Training</button>
+        <button class="secondary full" id="resetBtn">Reset session</button>
+      </section>
+      <section class="panel">
+        <h3>Achievements</h3>
+        <p>Earn badges as you complete your safety training.</p>
+        <div class="achievement-grid">
+          <div class="achievement" id="badgeScout"><span class="medal">🔎</span><strong>First Find</strong><small>Find 1 hazard</small></div>
+          <div class="achievement" id="badgeHunter"><span class="medal">🏅</span><strong>Hazard Hunter</strong><small>Find all 4</small></div>
+          <div class="achievement" id="badgeExpert"><span class="medal">🏆</span><strong>Safety Expert</strong><small>Perfect quiz</small></div>
+        </div>
+        <div class="best-score"><span>Personal best</span><strong id="bestScore">0%</strong></div>
+      </section>
+      <section class="panel">
+        <h3>Hazard checklist</h3>
+        <p style="margin-bottom:12px">Select an item to inspect its location and recommended action.</p>
+        <div class="hazard-list" id="hazardList"></div>
+        <div class="selected-card" id="selectedCard"><h4>Choose a hazard</h4><p>Click a glowing marker in the factory or select a checklist item.</p></div>
+        <div class="action-row"><button class="primary" id="identifyBtn" disabled>Identify hazard</button><button class="secondary" id="actionBtn" disabled>Safety action</button></div>
+      </section>
+      <section class="panel">
+        <div class="tabs"><button class="tab active" data-tab="guide">Quick guide</button><button class="tab" data-tab="quiz">Safety quiz</button><button class="tab" data-tab="drill">Evacuation</button></div>
+        <div class="content active" id="guideContent">
+          <div class="instruction"><span class="num">1</span><span>Look around the factory and inspect each highlighted object or area.</span></div>
+          <div class="instruction"><span class="num">2</span><span>Choose <b>Identify hazard</b> to record your finding.</span></div>
+          <div class="instruction"><span class="num">3</span><span>Choose <b>Safety action</b> to learn the correct response.</span></div>
+          <div class="instruction"><span class="num">4</span><span>Complete the safety quiz. Your score updates as you learn.</span></div>
+          <p class="tiny">Controls: WASD to move, drag the mouse to look around, click a marker to inspect. Earn First Find, Hazard Hunter and Safety Expert badges. Your badges and personal best are saved in this browser. This is an educational demo, not certified safety training.</p>
+        </div>
+        <div class="content" id="quizContent">
+          <div id="quizArea"><p class="tiny">Complete the quiz to test your safety decisions.</p><button class="primary full" id="beginQuiz">Begin 4-question quiz</button></div>
+        </div>
+        <div class="content" id="drillContent">
+          <p>Emergency alarm activated. Reach the emergency exit before the countdown reaches zero. Click the exit door to open it and enter the outdoor industrial yard. Keep clear of hazard zones while moving.</p>
+          <div class="drill-stats"><div class="drill-stat"><small>Time remaining</small><strong id="drillTimer">30s</strong></div><div class="drill-stat"><small>Hazard contacts</small><strong id="drillContacts">0</strong></div></div>
+          <div class="progress"><span id="drillProgress"></span></div>
+          <div class="drill-status" id="drillStatus">Ready for the drill. Press Start, use W/A/S/D to reach the exit, then click the door to open it and go outdoors.</div>
+          <button class="primary full" id="startDrill">Start evacuation drill</button>
+          <button class="secondary full" id="resetDrill">Reset drill</button>
+          <p class="tiny" style="margin-top:10px">Training scenario only. Follow your workplace's actual evacuation plan and designated assembly point during a real emergency.</p>
+        </div>
+      </section>
+    </aside>
+  </main>
+</div>
+<div class="overlay" id="welcome">
+  <div class="modal">
+    <div class="brand" style="margin-bottom:16px"><div class="logo">F</div><div><h1>FORGESAFE VR</h1><p>IMMERSIVE SAFETY ORIENTATION</p></div></div>
+    <h2>Welcome to the factory floor</h2>
+    <p>Take a short virtual walk-through, identify hazards, learn the correct response, and finish with a safety quiz.</p>
+    <ul><li>Explore a simple 3D factory scene.</li><li>Inspect four workplace hazards.</li><li>Open the emergency exit and explore the outdoor industrial yard.</li><li>Practice an emergency evacuation drill.</li><li>Receive feedback and a final score.</li></ul>
+    <p class="tiny">For a best experience, use a desktop browser. Mouse and keyboard controls are supported.</p>
+    <div class="modal-actions"><button class="primary" id="enterBtn">Enter training floor</button><button class="secondary" id="skipIntro">View controls</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+
+const canvas=document.querySelector('#scene');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.setClearColor(0x101b24);
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x101b24);
+scene.fog=new THREE.Fog(0x101b24,32,75);
+const camera=new THREE.PerspectiveCamera(65,2,0.1,100);
+camera.position.set(0,2.4,10);
+const hemi=new THREE.HemisphereLight(0xbad9e8,0x26313a,2.0);scene.add(hemi);
+const sun=new THREE.DirectionalLight(0xffedcf,3.0);sun.position.set(-7,13,8);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-20;sun.shadow.camera.right=20;sun.shadow.camera.top=20;sun.shadow.camera.bottom=-20;scene.add(sun);
+const fill=new THREE.PointLight(0x38bfc6,24,30);fill.position.set(0,7,-4);scene.add(fill);
+const mats={
+floor:new THREE.MeshStandardMaterial({color:0x27343b,roughness:.88}),
+wall:new THREE.MeshStandardMaterial({color:0x354550,roughness:.8}),
+dark:new THREE.MeshStandardMaterial({color:0x131e26,metalness:.3,roughness:.65}),
+steel:new THREE.MeshStandardMaterial({color:0x71828b,metalness:.6,roughness:.35}),
+yellow:new THREE.MeshStandardMaterial({color:0xf5b942,roughness:.55}),
+cyan:new THREE.MeshStandardMaterial({color:0x35c9c4,metalness:.15,roughness:.4}),
+red:new THREE.MeshStandardMaterial({color:0xe95b54,roughness:.55}),
+white:new THREE.MeshStandardMaterial({color:0xe2e8e8,roughness:.5}),
+rubber:new THREE.MeshStandardMaterial({color:0x17191b,roughness:.95}),
+green:new THREE.MeshStandardMaterial({color:0x55b982,roughness:.65})
+};
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(36,32),mats.floor);floor.rotation.x=-Math.PI/2;floor.position.y=0;floor.receiveShadow=true;scene.add(floor);
+const grid=new THREE.GridHelper(36,36,0x40535d,0x34444d);grid.position.y=.012;scene.add(grid);
+function box(w,h,d,mat,x,y,z,group=scene){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;group.add(m);return m}
+function cylinder(rt,rb,h,mat,x,y,z,group=scene){const m=new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,20),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;group.add(m);return m}
+function line(x1,y1,z1,x2,y2,z2,color=0xe9b74e,r=.045){const a=new THREE.Vector3(x1,y1,z1),b=new THREE.Vector3(x2,y2,z2),dir=new THREE.Vector3().subVectors(b,a);const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,dir.length(),8),new THREE.MeshStandardMaterial({color}));m.position.copy(a).add(b).multiplyScalar(.5);m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),dir.normalize());scene.add(m);return m}
+// Factory perimeter, windows and roof beams
+box(16,5,.45,mats.wall,-10,2.5,-16);box(16,5,.45,mats.wall,10,2.5,-16);box(4,2,.45,mats.wall,0,4,-16);
+box(.45,5,32,mats.wall,-18,2,0);
+box(.45,5,32,mats.wall,18,2,0);
+for(let x=-15;x<=15;x+=6){box(.25,5,.35,mats.steel,x,2.5,-15.7);box(.2,.2,31,mats.steel,x,4.7,0)}
+for(let x=-14;x<=14;x+=7){box(4,1.5,.12,mats.cyan,x,3.1,-15.73);box(4,.12,.14,mats.steel,x,3.9,-15.7)}
+// Yellow aisle markings
+for(let z=-12;z<=12;z+=3){box(.08,.018,1.6,mats.yellow,-5,0.025,z);box(.08,.018,1.6,mats.yellow,5,0.025,z)}
+// Machine stations
+function machine(x,z,color=0x4b7886){
+ const g=new THREE.Group();scene.add(g);
+ box(2.4,1.4,1.8,new THREE.MeshStandardMaterial({color,metalness:.35,roughness:.55}),x,1.0,z,g);
+ box(1.55,.65,.12,mats.dark,x,1.35,z+.96,g);
+ box(.55,.18,.08,mats.cyan,x-.4,1.5,z+1.04,g);
+ box(.25,.25,.08,mats.yellow,x+.45,1.5,z+1.04,g);
+ box(2.7,.12,2.05,mats.steel,x,1.78,z,g);
+ for(let xx of [x-1,x+1]){cylinder(.1,.1,.12,mats.dark,xx,1.86,z,g)}
+ box(2.6,.18,2.1,mats.dark,x,.22,z,g);
+ for(let xx of [x-.8,x+.8])for(let zz of [z-.6,z+.6])cylinder(.11,.11,.16,mats.rubber,xx,.12,zz,g);
+ return g;
+}
+machine(-11,-5,0x477783);machine(10,-5,0x5a707b);machine(-11,5,0x687f87);machine(11,5,0x4d7b70);
+// Pallets and stacked crates
+function crate(x,y,z,size=1.15){box(size,.12,size,mats.yellow,x,y-.45,z);box(size*.9,size*.8,size*.9,new THREE.MeshStandardMaterial({color:0x8d6746,roughness:.9}),x,y,z);for(let i=-1;i<=1;i+=2)box(.06,size*.75,.04,mats.steel,x+i*size*.25,y,z+size*.46)}
+crate(-14,0.9,10);crate(-12.7,.9,10);crate(-14,2.0,10);
+// Exit door, hinged so the user can click it open.
+for(let z=-2;z<=2;z+=2){line(14,.3,z,14,1.1,z,0xf0b940,.055)}line(14,1.1,-2,14,1.1,2,0xf0b940,.055);line(14,.55,-2,14,.55,2,0xf0b940,.035);
+const exitDoorPivot=new THREE.Group();exitDoorPivot.position.set(-1.55,0,-15.72);scene.add(exitDoorPivot);
+const exitDoor=box(3.1,3,.18,new THREE.MeshStandardMaterial({color:0x347a58,metalness:.18,roughness:.55}),1.55,1.5,0,exitDoorPivot);
+const doorInset=box(2.72,2.62,.035,new THREE.MeshStandardMaterial({color:0x285b45,roughness:.7}),1.55,1.5,.11,exitDoorPivot);
+const doorWindow=box(.72,.62,.04,new THREE.MeshStandardMaterial({color:0x78b8c7,metalness:.15,roughness:.25}),1.55,2.15,.14,exitDoorPivot);
+const doorHandle=box(.07,.42,.06,mats.yellow,2.72,1.35,.17,exitDoorPivot);
+const exitLabel=document.createElement('canvas');exitLabel.width=256;exitLabel.height=64;const ctx=exitLabel.getContext('2d');ctx.fillStyle='#1b7047';ctx.fillRect(0,0,256,64);ctx.fillStyle='white';ctx.font='bold 30px Arial';ctx.textAlign='center';ctx.fillText('EMERGENCY EXIT',128,42);const exitTex=new THREE.CanvasTexture(exitLabel);const exitSign=new THREE.Mesh(new THREE.PlaneGeometry(2.6,.58),new THREE.MeshBasicMaterial({map:exitTex}));exitSign.position.set(0,3.55,-15.55);scene.add(exitSign);
+const exitHitbox=new THREE.Mesh(new THREE.BoxGeometry(3.5,3.5,.65),new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false,colorWrite:false}));exitHitbox.position.set(0,1.65,-15.7);scene.add(exitHitbox);
+let exitDoorOpen=false;let exitDoorTarget=0;let outdoors=false;
+// Outdoor industrial grounds: asphalt road, sidewalks, road markings, gates and factory-side structures.
+const outdoorGround=new THREE.Mesh(new THREE.PlaneGeometry(42,40),new THREE.MeshStandardMaterial({color:0x66736f,roughness:1}));outdoorGround.rotation.x=-Math.PI/2;outdoorGround.position.set(0,-.035,-35);outdoorGround.receiveShadow=true;scene.add(outdoorGround);
+const road=new THREE.Mesh(new THREE.PlaneGeometry(8,38),new THREE.MeshStandardMaterial({color:0x30383d,roughness:.95}));road.rotation.x=-Math.PI/2;road.position.set(0,.005,-35);road.receiveShadow=true;scene.add(road);
+for(const x of [-4.2,4.2]){box(.18,.025,38,new THREE.MeshStandardMaterial({color:0xd9d6bc}),x,.025,-35);box(1.2,.12,38,new THREE.MeshStandardMaterial({color:0xb5b8ae}),x*1.42,.02,-35)}
+for(let z=-19;z>=-50;z-=5)box(.12,.025,2.2,new THREE.MeshStandardMaterial({color:0xe9e5d1}),0,.035,z);
+// Outdoor loading bay and industrial yard details.
+box(6,2.4,.35,new THREE.MeshStandardMaterial({color:0x536873,roughness:.8}),-9,1.2,-20.2);box(2.8,1.5,.1,new THREE.MeshStandardMaterial({color:0x293d46}),-9,1.0,-20);
+for(const x of [-12,12]){for(let z=-22;z>=-49;z-=3){cylinder(.065,.065,2.3,new THREE.MeshStandardMaterial({color:0x586a70,metalness:.55}),x,1.15,z);line(x,1.9,z,x,1.9,z-3,0x87999a,.025);line(x,.45,z,x,.45,z-3,0x87999a,.025)}}
+for(const x of [-10,-7,7,10]){box(1.8,.16,1.8,new THREE.MeshStandardMaterial({color:0x6b7777}),x,.08,-25-(Math.abs(x)%3)*2);box(1.45,.7,1.45,new THREE.MeshStandardMaterial({color:x<0?0x9b7956:0x526f78}),x,.5,-25-(Math.abs(x)%3)*2)}
+const outsideSignCanvas=document.createElement('canvas');outsideSignCanvas.width=256;outsideSignCanvas.height=80;const osc=outsideSignCanvas.getContext('2d');osc.fillStyle='#16333b';osc.fillRect(0,0,256,80);osc.fillStyle='#e9f4f4';osc.font='bold 25px Arial';osc.textAlign='center';osc.fillText('INDUSTRIAL',128,32);osc.fillText('FACILITY',128,62);const outsideSign=new THREE.Mesh(new THREE.PlaneGeometry(3.2,1),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(outsideSignCanvas)}));outsideSign.position.set(-8,3,-20.0);scene.add(outsideSign);
+// Overhead pipework
+for(let x of [-7,0,7]){line(x,4.3,-13,x,4.3,12,0x4b9eaa,.12);for(let z=-10;z<=10;z+=5)line(x,4.3,z,x,4.8,z,0x71838c,.055)}
+// Hazard marker system
+const hazards=[
+{id:'spill',name:'Oil spill',short:'Slip hazard',icon:'💧',position:[-2,.08,1],description:'A slippery liquid spill is present in the main walkway.',action:'Keep people away, alert the supervisor, and follow site spill-cleanup procedures using the correct PPE and spill kit.',question:'What is the safest first response to an oil spill?',options:['Walk through it carefully','Isolate the area and report it','Cover it with loose paper','Ignore it if it is small'],correct:1,explain:'Isolate the area to prevent slips, then report it and follow the approved cleanup procedure.'},
+{id:'cable',name:'Loose electrical cable',short:'Trip / electrical risk',icon:'⚡',position:[6,.08,1],description:'A loose cable crosses a pedestrian route near a machine.',action:'Do not touch damaged electrical equipment. Keep clear, warn others, and report it to an authorised person for safe isolation and repair.',question:'A cable is damaged and crossing a walkway. What should you do?',options:['Move it while the machine runs','Tape it down yourself','Keep clear and report it','Step over it repeatedly'],correct:2,explain:'Damaged electrical equipment should be kept clear and reported for authorised isolation and repair.'},
+{id:'ppe',name:'Missing PPE',short:'Personal protection',icon:'🦺',position:[-7,.1,-1],description:'A work station is marked for eye and hearing protection, but PPE is missing.',action:'Stop before entering the controlled work area. Obtain the required, correctly fitted PPE and follow the station safety rules.',question:'Before entering a marked machine zone, what should a worker do?',options:['Wear the required PPE','Enter quickly without PPE','Use another worker’s damaged PPE','Rely only on warning lights'],correct:0,explain:'Use the required, correctly fitted PPE before entering the controlled work area.'},
+{id:'crate',name:'Unstable stacked boxes',short:'Falling-object risk',icon:'📦',position:[-13,.1,10],description:'Boxes are stacked unevenly and may fall into the nearby route.',action:'Keep clear and notify the responsible person. The stack should be restacked securely using the site’s manual-handling rules.',question:'You notice an unstable stack of boxes. What is the best response?',options:['Pull the bottom box out','Stand beside it and continue','Warn others and report it','Climb onto the stack'],correct:2,explain:'Keep people clear and report the unstable load so it can be secured using approved procedures.'}
+];
+const hazardObjects=new Map();const raycaster=new THREE.Raycaster();const pointer=new THREE.Vector2();let selectedId=null;let inspected=new Set();let acted=new Set();let quizStarted=false;let quizIndex=0;let quizCorrect=0;let quizAnswers=[];let trainingStarted=false;let toastTimer;let drillActive=false;let drillTime=30;let drillContacts=new Set();let drillFinished=false;let drillLastSecond=30;
+const achievementKey='forgesafe-achievements-v1';const bestScoreKey='forgesafe-best-score-v1';let savedAchievements={};let bestScore=0;try{savedAchievements=JSON.parse(localStorage.getItem(achievementKey)||'{}');bestScore=Number(localStorage.getItem(bestScoreKey)||0)}catch(e){}
+function makeHazard(h){
+ const group=new THREE.Group();group.position.set(...h.position);scene.add(group);
+ const hit=new THREE.Mesh(new THREE.SphereGeometry(1.15,12,8),new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false,colorWrite:false}));hit.position.y=.65;group.add(hit);
+ group.userData.hazardId=h.id;hit.userData.hazardId=h.id;hazardObjects.set(h.id,{group,ring:null,core:null,label:null});return group;
+}
+
+hazards.forEach(makeHazard);
+
+// Animated hazard effects: spill shimmer, electrical sparks, missing-PPE beacon and unstable-load warning.
+const hazardEffects={};
+const oilMat=new THREE.MeshStandardMaterial({color:0x102b35,metalness:.72,roughness:.18,emissive:0x08252a,emissiveIntensity:.35,transparent:true,opacity:.92});
+const oilMat2=new THREE.MeshStandardMaterial({color:0x24727a,metalness:.55,roughness:.16,transparent:true,opacity:.72});
+const oilPuddle=new THREE.Mesh(new THREE.SphereGeometry(1,32,20),oilMat);
+oilPuddle.scale.set(1.12,.025,.66);oilPuddle.position.set(-2,.045,1);oilPuddle.rotation.y=-.28;scene.add(oilPuddle);
+const oilSheen=new THREE.Mesh(new THREE.SphereGeometry(1,28,16),oilMat2);
+oilSheen.scale.set(.65,.018,.25);oilSheen.position.set(-2.12,.067,.92);oilSheen.rotation.y=.42;scene.add(oilSheen);
+const oilDrops=[];
+for(let i=0;i<7;i++){const drop=new THREE.Mesh(new THREE.SphereGeometry(.055+(i%3)*.018,12,8),i%2?oilMat:oilMat2);drop.scale.y=.25;drop.position.set(-2+Math.sin(i*2.3)*.92,.05,-.0+1+Math.cos(i*2.1)*.48);scene.add(drop);oilDrops.push(drop)}
+hazardEffects.oil={puddle:oilPuddle,sheen:oilSheen,drops:oilDrops};
+
+// A visible loose cable with intermittent warning sparks. This is a visual training effect.
+const cableCurve=new THREE.CatmullRomCurve3([new THREE.Vector3(5.1,.055,.15),new THREE.Vector3(5.45,.07,.75),new THREE.Vector3(6.0,.06,1.35),new THREE.Vector3(6.75,.06,1.05),new THREE.Vector3(7.05,.06,.45)]);
+const cable=new THREE.Mesh(new THREE.TubeGeometry(cableCurve,36,.055,8,false),new THREE.MeshStandardMaterial({color:0x171c20,roughness:.85}));
+scene.add(cable);
+const cableStripe=new THREE.Mesh(new THREE.TubeGeometry(cableCurve,36,.018,6,false),new THREE.MeshStandardMaterial({color:0xe8b83d,emissive:0x8e5b05,emissiveIntensity:.4}));
+scene.add(cableStripe);
+const sparks=[];
+for(let i=0;i<9;i++){const sp=new THREE.Mesh(new THREE.SphereGeometry(.035+(i%2)*.02,8,8),new THREE.MeshBasicMaterial({color:i%2?0xffc64d:0x7deaff}));sp.position.set(6+Math.sin(i*4.3)*.24,.18+(i%4)*.1,1+Math.cos(i*2.8)*.24);scene.add(sp);sparks.push(sp)}
+hazardEffects.cable={sparks};
+
+// Missing-PPE station: flashing amber beacon and a sign.
+const ppeBeacon=new THREE.Mesh(new THREE.SphereGeometry(.13,16,12),new THREE.MeshStandardMaterial({color:0xffb82e,emissive:0xff7900,emissiveIntensity:2.4}));
+ppeBeacon.position.set(-7,1.15,-1);scene.add(ppeBeacon);
+const ppeRing=new THREE.Mesh(new THREE.TorusGeometry(.42,.035,8,28),new THREE.MeshBasicMaterial({color:0xffbf47}));
+ppeRing.rotation.x=Math.PI/2;ppeRing.position.set(-7,.09,-1);scene.add(ppeRing);
+const ppeCanvas=document.createElement('canvas');ppeCanvas.width=256;ppeCanvas.height=96;
+const pctx=ppeCanvas.getContext('2d');pctx.fillStyle='#412a16';pctx.fillRect(0,0,256,96);pctx.strokeStyle='#ffc04a';pctx.lineWidth=6;pctx.strokeRect(4,4,248,88);pctx.fillStyle='#fff0c7';pctx.font='bold 24px Arial';pctx.textAlign='center';pctx.fillText('PPE REQUIRED',128,39);pctx.font='bold 20px Arial';pctx.fillText('STOP',128,70);
+const ppeSign=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(ppeCanvas),depthTest:false}));ppeSign.position.set(-7,2.05,-1);ppeSign.scale.set(1.8,.68,1);scene.add(ppeSign);
+hazardEffects.ppe={beacon:ppeBeacon,ring:ppeRing,sign:ppeSign};
+
+// A pulsing caution halo and swaying warning marker call attention to the unstable stack.
+const crateWarning=new THREE.Mesh(new THREE.TorusGeometry(.78,.055,8,32),new THREE.MeshBasicMaterial({color:0xffbf47}));
+crateWarning.rotation.x=Math.PI/2;crateWarning.position.set(-13.35,.08,10);scene.add(crateWarning);
+const crateWarnCanvas=document.createElement('canvas');crateWarnCanvas.width=128;crateWarnCanvas.height=128;
+const cw=crateWarnCanvas.getContext('2d');cw.fillStyle='#6b2b25';cw.beginPath();cw.arc(64,64,58,0,Math.PI*2);cw.fill();cw.strokeStyle='#ffc44d';cw.lineWidth=7;cw.stroke();cw.fillStyle='#fff2c7';cw.font='bold 74px Arial';cw.textAlign='center';cw.textBaseline='middle';cw.fillText('!',64,66);
+const crateWarn=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(crateWarnCanvas),depthTest:false}));crateWarn.position.set(-13.35,2.65,10);crateWarn.scale.set(.7,.7,1);scene.add(crateWarn);
+hazardEffects.crate={ring:crateWarning,sign:crateWarn};
+
+// Stylized factory workers. Their arms/legs animate so the floor feels active.
+const workerActors=[];
+function createWorker(x,z,shirtColor,walk=false){
+ const root=new THREE.Group();root.position.set(x,0,z);scene.add(root);
+ const shirt=new THREE.MeshStandardMaterial({color:shirtColor,roughness:.72});
+ const skin=new THREE.MeshStandardMaterial({color:0xc98e68,roughness:.85});
+ const trousers=new THREE.MeshStandardMaterial({color:0x273b53,roughness:.8});
+ const boot=new THREE.MeshStandardMaterial({color:0x171d22,roughness:.9});
+ const helmetMat=new THREE.MeshStandardMaterial({color:0xf5c443,roughness:.5});
+ const torso=box(.48,.66,.28,shirt,0,1.14,0,root);
+ const vest=box(.5,.37,.3,new THREE.MeshStandardMaterial({color:0xd9a72e,roughness:.6}),0,1.18,.015,root);
+ box(.06,.32,.315,mats.white,-.13,1.18,.02,root);box(.06,.32,.315,mats.white,.13,1.18,.02,root);
+ const head=new THREE.Mesh(new THREE.SphereGeometry(.17,16,12),skin);head.position.set(0,1.65,0);root.add(head);
+ const helmet=new THREE.Mesh(new THREE.SphereGeometry(.19,16,8,0,Math.PI*2,0,Math.PI/2),helmetMat);helmet.position.set(0,1.72,0);root.add(helmet);
+ const brim=new THREE.Mesh(new THREE.CylinderGeometry(.22,.22,.035,16),helmetMat);brim.position.set(0,1.68,0);root.add(brim);
+ const armL=new THREE.Group();armL.position.set(-.29,1.39,0);root.add(armL);
+ box(.14,.43,.15,shirt,0,-.21,0,armL);const handL=new THREE.Mesh(new THREE.SphereGeometry(.075,10,8),skin);handL.position.set(0,-.44,.01);armL.add(handL);
+ const armR=new THREE.Group();armR.position.set(.29,1.39,0);root.add(armR);
+ box(.14,.43,.15,shirt,0,-.21,0,armR);const handR=new THREE.Mesh(new THREE.SphereGeometry(.075,10,8),skin);handR.position.set(0,-.44,.01);armR.add(handR);
+ const legL=new THREE.Group();legL.position.set(-.13,.83,0);root.add(legL);box(.17,.48,.18,trousers,0,-.23,0,legL);box(.19,.11,.28,boot,0,-.49,.045,legL);
+ const legR=new THREE.Group();legR.position.set(.13,.83,0);root.add(legR);box(.17,.48,.18,trousers,0,-.23,0,legR);box(.19,.11,.28,boot,0,-.49,.045,legR);
+ // Some workers operate equipment; others stroll slowly along a short aisle.
+ workerActors.push({root,armL,armR,legL,legR,baseX:x,baseZ:z,phase:Math.random()*Math.PI*2,walk,shirtColor});
+ return root;
+}
+createWorker(-8.6,-5,0x267f88,false);
+createWorker(8.1,-5.4,0x386f9c,false);
+createWorker(8.3,5.6,0x8b6244,true);
+createWorker(-8.7,6.8,0x3d8c68,true);
+createWorker(2.4,7.5,0x9b7041,true);
+
+const controls={keys:{},yaw:0,pitch:-.08,dragging:false,lastX:0,lastY:0};
+camera.position.set(0,2.2,11);controls.yaw=0;
+function updateCamera(){camera.rotation.order='YXZ';camera.rotation.y=controls.yaw;camera.rotation.x=controls.pitch}
+function toast(msg){const el=document.querySelector('#toast');el.textContent=msg;el.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.style.display='none',2600)}
+function selectHazard(id){selectedId=id;const h=hazards.find(x=>x.id===id);if(!h)return;const done=inspected.has(id);document.querySelector('#selectedCard').innerHTML=`<h4>${h.icon} ${h.name}</h4><p>${h.description}</p><p class="tip">${done?'✓ Hazard identified.':'Inspect this hazard, then record your finding.'}</p>`;document.querySelector('#identifyBtn').disabled=done;document.querySelector('#actionBtn').disabled=!done||acted.has(id);document.querySelector('#modePill').textContent='INSPECTING: '+h.name.toUpperCase();renderHazardList();hazardObjects.forEach((o,key)=>{o.ring.material.color.set(key===id?0x51d6d0:(inspected.has(key)?0x72e0a1:0xffbf47));o.core.material.color.set(key===id?0x51d6d0:(inspected.has(key)?0x72e0a1:0xffbf47));o.core.material.emissive.set(key===id?0x126d70:(inspected.has(key)?0x174e2e:0x9c4b08));});}
+function renderHazardList(){const list=document.querySelector('#hazardList');list.innerHTML='';hazards.forEach(h=>{const el=document.createElement('button');el.className='hazard-item'+(inspected.has(h.id)?' done':'');el.style.textAlign='left';el.innerHTML=`<span class="hazard-icon">${h.icon}</span><span><strong>${h.name}</strong><small>${h.short}</small></span><span class="state">${inspected.has(h.id)?'FOUND':'TO FIND'}</span>`;el.addEventListener('click',()=>{selectHazard(h.id);focusHazard(h.id)});list.appendChild(el)})}
+function focusHazard(id){const h=hazards.find(x=>x.id===id);if(!h)return;const [x,,z]=h.position;const target=new THREE.Vector3(x,1,z);const direction=new THREE.Vector3().subVectors(target,camera.position);controls.yaw=Math.atan2(-direction.x,-direction.z);controls.pitch=-.08;updateCamera();toast('Hazard selected: '+h.name)}
+function updateProgress(){const found=inspected.size;document.querySelector('#foundCount').textContent=`${found}/${hazards.length}`;const pct=Math.round(found/hazards.length*100);document.querySelector('#progressText').textContent=pct+'%';document.querySelector('#progressBar').style.width=pct+'%';const currentScore=quizAnswers.length===hazards.length?Math.round(found/hazards.length*60+quizCorrect/hazards.length*40):Math.round(found/hazards.length*100);document.querySelector('#score').textContent=currentScore+'%';if(currentScore>bestScore){bestScore=currentScore;try{localStorage.setItem(bestScoreKey,String(bestScore))}catch(e){}}document.querySelector('#bestScore').textContent=bestScore+'%';const unlocked={scout:found>=1,hunter:found===hazards.length,expert:quizAnswers.length===hazards.length&&quizCorrect===hazards.length};const badgeIds={scout:'badgeScout',hunter:'badgeHunter',expert:'badgeExpert'};Object.entries(unlocked).forEach(([key,isUnlocked])=>{if(isUnlocked&&!savedAchievements[key]){savedAchievements[key]=true;toast(({scout:'Achievement unlocked: First Find!',hunter:'Achievement unlocked: Hazard Hunter!',expert:'Achievement unlocked: Safety Expert!'}[key]))}if(savedAchievements[key])document.querySelector('#'+badgeIds[key]).classList.add('unlocked')});try{localStorage.setItem(achievementKey,JSON.stringify(savedAchievements))}catch(e){}}
+document.querySelector('#identifyBtn').addEventListener('click',()=>{if(!selectedId)return;inspected.add(selectedId);selectHazard(selectedId);updateProgress();toast('Hazard identified. Review the recommended safety action.')});
+document.querySelector('#actionBtn').addEventListener('click',()=>{if(!selectedId)return;const h=hazards.find(x=>x.id===selectedId);if(!h)return;acted.add(selectedId);document.querySelector('#selectedCard').innerHTML=`<h4>Recommended response</h4><p>${h.action}</p><p class="tip">Follow your workplace procedures and supervisor instructions.</p>`;document.querySelector('#actionBtn').disabled=true;toast('Safety instruction reviewed.')});
+document.querySelector('#startBtn').addEventListener('click',()=>{trainingStarted=true;document.querySelector('#welcome').style.display='none';canvas.focus();toast('Training session started. Inspect all four hazards.')});
+document.querySelector('#resetBtn').addEventListener('click',()=>{stopDrill(false);inspected.clear();acted.clear();selectedId=null;quizStarted=false;quizIndex=0;quizCorrect=0;quizAnswers=[];trainingStarted=false;document.querySelector('#quizArea').innerHTML='<p class="tiny">Complete the quiz to test your safety decisions.</p><button class="primary full" id="beginQuiz">Begin 4-question quiz</button>';document.querySelector('#beginQuiz').addEventListener('click',startQuiz);document.querySelector('#selectedCard').innerHTML='<h4>Choose a hazard</h4><p>Click a glowing marker in the factory or select a checklist item.</p>';document.querySelector('#identifyBtn').disabled=true;document.querySelector('#actionBtn').disabled=true;document.querySelector('#modePill').textContent='EXPLORATION MODE';renderHazardList();updateProgress();document.querySelector('#welcome').style.display='grid';toast('Session reset.')});
+document.querySelector('#enterBtn').addEventListener('click',()=>{document.querySelector('#welcome').style.display='none';trainingStarted=true;toast('Welcome. Start by selecting a glowing hazard.')});
+document.querySelector('#skipIntro').addEventListener('click',()=>{document.querySelector('#welcome').querySelector('h2').textContent='Controls';document.querySelector('#welcome').querySelector('p').textContent='Move with WASD, drag the mouse to look around, and click the glowing hazard markers to inspect them.';document.querySelector('#welcome').querySelector('ul').innerHTML='<li>Click a hazard in the scene or the checklist.</li><li>Identify each hazard to record it.</li><li>Review the recommended safety action.</li><li>Open the Safety quiz tab to finish.</li>';});
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b===btn));document.querySelectorAll('.content').forEach(c=>c.classList.toggle('active',c.id===btn.dataset.tab+'Content'));if(btn.dataset.tab==='drill'){document.querySelector('#modePill').textContent='EMERGENCY EVACUATION DRILL';canvas.focus()}}));
+function startQuiz(){quizStarted=true;quizIndex=0;quizCorrect=0;quizAnswers=[];renderQuiz()}
+function setDrillStatus(message,type=''){const el=document.querySelector('#drillStatus');el.textContent=message;el.className='drill-status'+(type?' '+type:'')}
+function startDrill(){drillActive=true;drillFinished=false;drillTime=30;drillContacts=new Set();drillLastSecond=30;camera.position.set(0,2.2,11);controls.yaw=0;controls.pitch=-.08;updateCamera();document.querySelector('#drillContacts').textContent='0';document.querySelector('#drillTimer').textContent='30s';document.querySelector('#drillProgress').style.width='0%';document.querySelector('#startDrill').textContent='Drill in progress…';document.querySelector('#startDrill').disabled=true;setDrillStatus('Alarm active! Reach the emergency exit, click the door to open it, and move into the outdoor yard. Avoid hazard zones.');document.querySelector('#modePill').textContent='EVACUATION IN PROGRESS';canvas.focus();toast('Evacuation drill started — 30 seconds!')}
+function stopDrill(success){drillActive=false;drillFinished=true;document.querySelector('#startDrill').disabled=false;document.querySelector('#startDrill').textContent='Try evacuation again';if(success){const clean=drillContacts.size===0;setDrillStatus((clean?'Excellent! Clean evacuation. ':'Outdoor yard reached! ')+'Time left: '+Math.ceil(drillTime)+'s. Hazard contacts: '+drillContacts.size+'. '+(clean?'You reached the exit without contacting a hazard.':'Try again and keep a wider distance from hazard markers.'),'good');toast(clean?'Evacuation complete — perfect run!':'Evacuation complete!')}else{setDrillStatus('Time expired. You did not reach the exit. Restart the drill and follow the green route.','bad');toast('Evacuation drill failed — try again.')}}
+function updateDrill(dt){if(!drillActive)return;drillTime=Math.max(0,drillTime-dt);const sec=Math.ceil(drillTime);document.querySelector('#drillTimer').textContent=sec+'s';document.querySelector('#drillProgress').style.width=((30-drillTime)/30*100)+'%';if(sec!==drillLastSecond){drillLastSecond=sec;if(sec<=10&&sec>0)toast('Hurry! '+sec+' seconds remaining.')};hazards.forEach(h=>{if(drillContacts.has(h.id))return;const [x,,z]=h.position;if(Math.hypot(camera.position.x-x,camera.position.z-z)<1.35){drillContacts.add(h.id);drillTime=Math.max(0,drillTime-3);document.querySelector('#drillContacts').textContent=String(drillContacts.size);setDrillStatus('Hazard zone contacted: '+h.name+'. Three seconds deducted. Keep clear and continue to the exit.','bad');toast('Hazard contact! −3 seconds')}});if(outdoors){stopDrill(true);return}if(drillTime<=0)stopDrill(false)}
+document.querySelector('#startDrill').addEventListener('click',startDrill);document.querySelector('#resetDrill').addEventListener('click',()=>{drillActive=false;drillFinished=false;drillTime=30;drillContacts=new Set();drillLastSecond=30;document.querySelector('#drillTimer').textContent='30s';document.querySelector('#drillContacts').textContent='0';document.querySelector('#drillProgress').style.width='0%';document.querySelector('#startDrill').disabled=false;document.querySelector('#startDrill').textContent='Start evacuation drill';setDrillStatus('Ready for the drill. Press Start, use W/A/S/D to reach the exit, then click the door to open it and go outdoors.');toast('Evacuation drill reset.')});
+document.querySelector('#beginQuiz').addEventListener('click',startQuiz);
+function renderQuiz(){const area=document.querySelector('#quizArea');if(quizIndex>=hazards.length){area.innerHTML=`<h3>Quiz complete</h3><div class="metric"><small>Quiz result</small><strong>${quizCorrect}/${hazards.length} · ${Math.round(quizCorrect/hazards.length*100)}%</strong></div><p style="margin-top:10px">You completed the safety assessment. Review any missed answers and repeat the session to improve your score.</p><button class="primary full" id="retryQuiz">Try quiz again</button>`;document.querySelector('#retryQuiz').addEventListener('click',startQuiz);updateProgress();return}
+const h=hazards[quizIndex];area.innerHTML=`<p class="tiny">QUESTION ${quizIndex+1} OF ${hazards.length}</p><div class="quiz-q">${h.question}</div><div id="answers"></div><div class="feedback" id="quizFeedback"></div><button class="primary full hidden" id="nextQuestion">${quizIndex===hazards.length-1?'View result':'Next question'}</button>`;
+const answers=area.querySelector('#answers');h.options.forEach((opt,i)=>{const b=document.createElement('button');b.className='answer';b.textContent=String.fromCharCode(65+i)+'. '+opt;b.addEventListener('click',()=>answerQuestion(i,b));answers.appendChild(b)})}
+function answerQuestion(index,button){if(quizAnswers[quizIndex]!==undefined)return;const h=hazards[quizIndex];quizAnswers[quizIndex]=index;if(index===h.correct)quizCorrect++;document.querySelectorAll('#answers .answer').forEach((b,i)=>{b.disabled=true;if(i===h.correct)b.classList.add('correct');else if(i===index)b.classList.add('wrong')});document.querySelector('#quizFeedback').textContent=(index===h.correct?'Good decision. ':'Review this response. ')+h.explain;document.querySelector('#nextQuestion').classList.remove('hidden');updateProgress();document.querySelector('#nextQuestion').addEventListener('click',()=>{quizIndex++;renderQuiz()},{once:true})}
+// Scene interaction: click marker; drag to look around
+canvas.addEventListener('pointerdown',e=>{controls.dragging=true;controls.lastX=e.clientX;controls.lastY=e.clientY;canvas.setPointerCapture?.(e.pointerId)});
+canvas.addEventListener('pointerup',e=>{controls.dragging=false;const rect=canvas.getBoundingClientRect();pointer.x=((e.clientX-rect.left)/rect.width)*2-1;pointer.y=-((e.clientY-rect.top)/rect.height)*2+1;raycaster.setFromCamera(pointer,camera);const exitHits=raycaster.intersectObjects([exitHitbox,exitDoor,doorInset,doorWindow,doorHandle,exitSign],false);if(exitHits.length){exitDoorOpen=!exitDoorOpen;exitDoorTarget=exitDoorOpen?Math.PI/2:0;toast(exitDoorOpen?'Exit door opened. Welcome to the outdoor industrial yard!':'Exit door closed.');if(exitDoorOpen){outdoors=true;camera.position.set(0,2.2,-19.3);controls.yaw=0;controls.pitch=-.08;updateCamera();if(drillActive)stopDrill(true);document.querySelector('.stage-head h2').textContent='Outdoor industrial yard';document.querySelector('.stage-head p').textContent='You are outside the factory. Explore the road, sidewalks, loading area and industrial grounds.';document.querySelector('#modePill').textContent='OUTDOOR INDUSTRIAL YARD'}else{outdoors=false}return}const targets=[];hazardObjects.forEach(o=>{o.group.traverse(obj=>{if(obj.isMesh||obj.isSprite)targets.push(obj)})});const hits=raycaster.intersectObjects(targets,false);if(hits.length){let obj=hits[0].object;while(obj&&!obj.userData.hazardId&&obj.parent)obj=obj.parent;const id=obj?.userData?.hazardId||hits[0].object.parent?.userData?.hazardId;if(id){selectHazard(id);return}}});
+canvas.addEventListener('pointermove',e=>{if(!controls.dragging)return;const dx=e.clientX-controls.lastX,dy=e.clientY-controls.lastY;controls.lastX=e.clientX;controls.lastY=e.clientY;if(e.buttons===1){controls.yaw-=dx*.005;controls.pitch=Math.max(-.9,Math.min(.65,controls.pitch-dy*.004));updateCamera()}});
+window.addEventListener('keydown',e=>{const key=e.key.toLowerCase();if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(key)){controls.keys[key]=true;if(document.activeElement===canvas)e.preventDefault()}});
+window.addEventListener('keyup',e=>{controls.keys[e.key.toLowerCase()]=false});
+function moveCamera(dt){const k=controls.keys;const forward=(k.w||k.arrowup?1:0)-(k.s||k.arrowdown?1:0);const side=(k.d||k.arrowright?1:0)-(k.a||k.arrowleft?1:0);if(!forward&&!side)return;const speed=dt*5;const fwd=new THREE.Vector3(-Math.sin(controls.yaw),0,-Math.cos(controls.yaw));const right=new THREE.Vector3(Math.cos(controls.yaw),0,-Math.sin(controls.yaw));camera.position.addScaledVector(fwd,forward*speed);camera.position.addScaledVector(right,side*speed);camera.position.x=THREE.MathUtils.clamp(camera.position.x,-19,19);camera.position.z=THREE.MathUtils.clamp(camera.position.z,-52,14);camera.position.y=2.2}
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
+window.addEventListener('resize',resize);resize();renderHazardList();updateProgress();
+let previous=performance.now();
+function animate(now){requestAnimationFrame(animate);const dt=Math.min((now-previous)/1000,.05);previous=now;moveCamera(dt);updateDrill(dt);exitDoorPivot.rotation.y=THREE.MathUtils.damp(exitDoorPivot.rotation.y,exitDoorTarget,4,dt);
+// Animate oil sheen and droplets so the spill looks wet and slippery.
+const oilPulse=.5+.5*Math.sin(now*.0032);
+oilPuddle.scale.set(1.12+oilPulse*.045,.025, .66+oilPulse*.035);
+oilSheen.position.x=-2.12+Math.sin(now*.0015)*.16;
+oilSheen.position.z=.92+Math.cos(now*.0018)*.08;
+oilSheen.material.opacity=.42+oilPulse*.34;
+oilDrops.forEach((d,i)=>{d.position.y=.045+Math.abs(Math.sin(now*.0018+i))* .025;d.scale.x=.7+.3*Math.sin(now*.002+i)});
+// Electrical sparks flicker quickly at the loose cable.
+sparks.forEach((sp,i)=>{const on=Math.sin(now*.018+i*2.1)>-.15;sp.visible=on;sp.scale.setScalar(on ? .7+Math.abs(Math.sin(now*.024+i)) : .15);sp.position.y=.12+Math.abs(Math.sin(now*.01+i*1.7))*.32});
+// Warning beacons pulse; unstable-load sign sways slightly.
+ppeBeacon.material.emissiveIntensity=1.1+2.8*oilPulse;ppeBeacon.scale.setScalar(.85+oilPulse*.3);ppeRing.scale.setScalar(.92+oilPulse*.18);ppeSign.material.rotation=Math.sin(now*.002)*.035;
+crateWarning.scale.setScalar(.92+oilPulse*.16);crateWarn.position.x=-13.35+Math.sin(now*.003)*.08;crateWarn.rotation.z=Math.sin(now*.0027)*.08;
+// Animate workers' working arms and legs, plus small walking loops for three workers.
+workerActors.forEach((w,i)=>{const t=now*.003+w.phase;w.armL.rotation.x=Math.sin(t*(w.walk?1.7:2.5))*(w.walk ? .65 : .34);w.armR.rotation.x=Math.cos(t*(w.walk?1.7:2.5))*(w.walk ? .65 : .34);w.armL.rotation.z=.06+Math.sin(t)*.08;w.armR.rotation.z=-.06-Math.sin(t)*.08;w.legL.rotation.x=w.walk ? Math.sin(t)*.48 : Math.sin(t)*.06;w.legR.rotation.x=w.walk ? -Math.sin(t)*.48 : -Math.sin(t)*.06;w.root.position.y=w.walk ? Math.abs(Math.sin(t*2))*.025 : Math.sin(t*1.5)*.012;if(w.walk){w.root.position.x=w.baseX+Math.sin(t*.32)*.48;w.root.position.z=w.baseZ+Math.cos(t*.32)*.28;w.root.rotation.y=Math.cos(t*.32)*.55}else{w.root.position.x=w.baseX;w.root.position.z=w.baseZ;w.root.rotation.y=i%2?-.12:.12}});
+renderer.render(scene,camera)}
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>
