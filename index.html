@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101820">
+<title>ForgeSafe VR | Industrial Safety Training</title>
+<style>
+:root{--bg:#0d141b;--panel:#151f29;--panel2:#1b2935;--line:#2b3b49;--text:#edf4f8;--muted:#a5b5c2;--cyan:#51d6d0;--amber:#ffbf47;--red:#ff626b;--green:#72e0a1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 Inter,Segoe UI,Arial,sans-serif}button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:10px 14px;font-weight:700;transition:.18s}button:hover{filter:brightness(1.08);transform:translateY(-1px)}button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}.primary{background:var(--cyan);color:#071416}.secondary{background:#293947;color:var(--text);border:1px solid #3b4d5c}.danger{background:#4b252b;color:#ffdfe1;border:1px solid #713840}.shell{max-width:1500px;margin:auto;padding:18px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px}.brand{display:flex;gap:12px;align-items:center}.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#52ded4,#168b91);display:grid;place-items:center;color:#092125;font-size:22px;font-weight:900}.brand h1{font-size:18px;letter-spacing:.06em;margin:0}.brand p{color:var(--muted);margin:2px 0 0;font-size:12px}.status{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}.dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 10px #72e0a166}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px}.stage-wrap,.panel{border:1px solid var(--line);background:var(--panel);border-radius:16px;overflow:hidden}.stage-head{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}.stage-head h2{margin:0;font-size:15px}.stage-head p{margin:3px 0 0;color:var(--muted);font-size:12px}.pill{font-size:11px;border:1px solid #3a4c59;background:#1d2a35;color:#b9cbd6;padding:5px 9px;border-radius:999px;white-space:nowrap}#scene{display:block;width:100%;height:min(66vh,650px);min-height:420px;background:#101b24;cursor:crosshair;outline:none}.scene-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.keys{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.key{border:1px solid #40505e;background:#202d38;padding:2px 6px;border-radius:5px;color:#e8f0f5;font-size:11px}.side{display:flex;flex-direction:column;gap:14px}.panel{padding:16px}.panel h3{margin:0 0 10px;font-size:14px}.panel p{margin:0;color:var(--muted);font-size:13px}.progress-row{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin:12px 0 7px}.progress{height:7px;background:#293743;border-radius:10px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:var(--cyan);transition:width .25s}.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.metric{background:var(--panel2);border:1px solid #293b48;padding:12px;border-radius:11px}.metric small{display:block;color:var(--muted);font-size:11px}.metric strong{font-size:24px;display:block;margin-top:4px}.hazard-list{display:flex;flex-direction:column;gap:8px}.hazard-item{display:flex;gap:10px;align-items:center;padding:10px;background:var(--panel2);border:1px solid #2b3b48;border-radius:10px}.hazard-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:9px;background:#392e1d;font-size:17px;flex-shrink:0}.hazard-item strong{display:block;font-size:12px}.hazard-item small{color:var(--muted);font-size:11px}.hazard-item .state{margin-left:auto;font-size:10px;color:var(--amber);white-space:nowrap}.hazard-item.done .state{color:var(--green)}.selected-card{background:#132a30;border:1px solid #28666a;border-radius:12px;padding:13px;margin-top:10px}.selected-card h4{margin:0 0 6px;font-size:14px}.selected-card p{color:#c0d4dc}.selected-card .tip{margin-top:10px;color:#8fe6df;font-size:12px}.action-row{display:flex;gap:8px;margin-top:12px}.action-row button{flex:1}.tabs{display:flex;gap:6px;margin-bottom:12px}.tab{flex:1;padding:8px 6px;background:#202d38;border:1px solid #344754;color:var(--muted);font-size:12px}.tab.active{background:#17464a;color:#cffffb;border-color:#287c7d}.content{display:none}.content.active{display:block}.instruction{display:flex;gap:9px;margin:10px 0;color:#c4d1da;font-size:12px}.num{width:22px;height:22px;border-radius:7px;background:#273945;color:var(--cyan);display:grid;place-items:center;flex-shrink:0;font-weight:800}.quiz-q{font-size:14px;color:var(--text);margin-bottom:12px}.answer{display:block;width:100%;text-align:left;margin:7px 0;background:#202d38;color:#dce7ed;border:1px solid #354856;font-size:12px}.answer.chosen{border-color:var(--cyan);background:#16383b}.answer.correct{border-color:var(--green);background:#16372c}.answer.wrong{border-color:var(--red);background:#3d242a}.feedback{font-size:12px;margin-top:9px;color:var(--muted)}.overlay{position:fixed;inset:0;background:#071017d9;display:grid;place-items:center;padding:20px;z-index:10}.modal{max-width:520px;width:100%;background:#15212b;border:1px solid #3a4c59;border-radius:18px;padding:26px;box-shadow:0 24px 80px #0008}.modal h2{margin:0 0 8px;font-size:23px}.modal p{color:var(--muted);font-size:14px}.modal ul{color:#cbd8e0;font-size:13px;padding-left:20px}.modal-actions{display:flex;gap:9px;margin-top:18px;flex-wrap:wrap}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1c3038;border:1px solid #3a6c70;color:#d9fffb;padding:10px 15px;border-radius:10px;z-index:20;display:none;box-shadow:0 8px 25px #0005;font-size:13px}.tiny{font-size:11px;color:var(--muted)}.full{width:100%;margin-top:10px}.hidden{display:none!important}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.side .panel:last-child{grid-column:1/-1}#scene{height:56vh;min-height:360px}}
+@media(max-width:620px){.shell{padding:10px}.topbar{align-items:flex-start}.status{display:none}.side{display:flex}.stage-head{align-items:flex-start;flex-direction:column}#scene{min-height:340px;height:52vh}.scene-foot{font-size:11px}.brand h1{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="logo">F</div><div><h1>FORGESAFE <span style="color:var(--cyan)">VR</span></h1><p>INDUSTRIAL WORKFORCE TRAINING SIMULATOR</p></div></div>
+    <div class="status"><span class="dot"></span> Simulation ready <span class="pill">3D BROWSER MODE</span></div>
+  </header>
+  <main class="layout">
+    <section class="stage-wrap">
+      <div class="stage-head"><div><h2>Factory floor · Training zone A</h2><p>Inspect the work area and identify every safety hazard.</p></div><span class="pill" id="modePill">EXPLORATION MODE</span></div>
+      <canvas id="scene" tabindex="0" aria-label="Interactive 3D factory floor. Click highlighted hazards to inspect them."></canvas>
+      <div class="scene-foot"><div class="keys"><span>Move</span><span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span><span>·</span><span>Look</span><span class="key">Mouse drag</span><span>·</span><span>Inspect</span><span class="key">Click hazard</span></div><div>Tip: click a hazard marker or use the list.</div></div>
+    </section>
+    <aside class="side">
+      <section class="panel">
+        <h3>Training progress</h3>
+        <div class="metric-grid"><div class="metric"><small>Hazards found</small><strong id="foundCount">0/4</strong></div><div class="metric"><small>Training score</small><strong id="score">0%</strong></div></div>
+        <div class="progress-row"><span>Inspection progress</span><span id="progressText">0%</span></div><div class="progress"><span id="progressBar"></span></div>
+        <button class="primary full" id="startBtn">Start / Resume Training</button>
+        <button class="secondary full" id="resetBtn">Reset session</button>
+      </section>
+      <section class="panel">
+        <h3>Hazard checklist</h3>
+        <p style="margin-bottom:12px">Select an item to inspect its location and recommended action.</p>
+        <div class="hazard-list" id="hazardList"></div>
+        <div class="selected-card" id="selectedCard"><h4>Choose a hazard</h4><p>Click a glowing marker in the factory or select a checklist item.</p></div>
+        <div class="action-row"><button class="primary" id="identifyBtn" disabled>Identify hazard</button><button class="secondary" id="actionBtn" disabled>Safety action</button></div>
+      </section>
+      <section class="panel">
+        <div class="tabs"><button class="tab active" data-tab="guide">Quick guide</button><button class="tab" data-tab="quiz">Safety quiz</button></div>
+        <div class="content active" id="guideContent">
+          <div class="instruction"><span class="num">1</span><span>Look around the factory and inspect each highlighted object or area.</span></div>
+          <div class="instruction"><span class="num">2</span><span>Choose <b>Identify hazard</b> to record your finding.</span></div>
+          <div class="instruction"><span class="num">3</span><span>Choose <b>Safety action</b> to learn the correct response.</span></div>
+          <div class="instruction"><span class="num">4</span><span>Complete the safety quiz. Your score updates as you learn.</span></div>
+          <p class="tiny">Controls: WASD to move, drag the mouse to look around, click a marker to inspect. This is an educational demo, not certified safety training.</p>
+        </div>
+        <div class="content" id="quizContent">
+          <div id="quizArea"><p class="tiny">Complete the quiz to test your safety decisions.</p><button class="primary full" id="beginQuiz">Begin 4-question quiz</button></div>
+        </div>
+      </section>
+    </aside>
+  </main>
+</div>
+<div class="overlay" id="welcome">
+  <div class="modal">
+    <div class="brand" style="margin-bottom:16px"><div class="logo">F</div><div><h1>FORGESAFE VR</h1><p>IMMERSIVE SAFETY ORIENTATION</p></div></div>
+    <h2>Welcome to the factory floor</h2>
+    <p>Take a short virtual walk-through, identify hazards, learn the correct response, and finish with a safety quiz.</p>
+    <ul><li>Explore a simple 3D factory scene.</li><li>Inspect four workplace hazards.</li><li>Receive feedback and a final score.</li></ul>
+    <p class="tiny">For a best experience, use a desktop browser. Mouse and keyboard controls are supported.</p>
+    <div class="modal-actions"><button class="primary" id="enterBtn">Enter training floor</button><button class="secondary" id="skipIntro">View controls</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+
+const canvas=document.querySelector('#scene');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.setClearColor(0x101b24);
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x101b24);
+scene.fog=new THREE.Fog(0x101b24,22,48);
+const camera=new THREE.PerspectiveCamera(65,2,0.1,100);
+camera.position.set(0,2.4,10);
+const hemi=new THREE.HemisphereLight(0xbad9e8,0x26313a,2.0);scene.add(hemi);
+const sun=new THREE.DirectionalLight(0xffedcf,3.0);sun.position.set(-7,13,8);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-20;sun.shadow.camera.right=20;sun.shadow.camera.top=20;sun.shadow.camera.bottom=-20;scene.add(sun);
+const fill=new THREE.PointLight(0x38bfc6,24,30);fill.position.set(0,7,-4);scene.add(fill);
+const mats={
+floor:new THREE.MeshStandardMaterial({color:0x27343b,roughness:.88}),
+wall:new THREE.MeshStandardMaterial({color:0x354550,roughness:.8}),
+dark:new THREE.MeshStandardMaterial({color:0x131e26,metalness:.3,roughness:.65}),
+steel:new THREE.MeshStandardMaterial({color:0x71828b,metalness:.6,roughness:.35}),
+yellow:new THREE.MeshStandardMaterial({color:0xf5b942,roughness:.55}),
+cyan:new THREE.MeshStandardMaterial({color:0x35c9c4,metalness:.15,roughness:.4}),
+red:new THREE.MeshStandardMaterial({color:0xe95b54,roughness:.55}),
+white:new THREE.MeshStandardMaterial({color:0xe2e8e8,roughness:.5}),
+rubber:new THREE.MeshStandardMaterial({color:0x17191b,roughness:.95}),
+green:new THREE.MeshStandardMaterial({color:0x55b982,roughness:.65})
+};
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(36,32),mats.floor);floor.rotation.x=-Math.PI/2;floor.position.y=0;floor.receiveShadow=true;scene.add(floor);
+const grid=new THREE.GridHelper(36,36,0x40535d,0x34444d);grid.position.y=.012;scene.add(grid);
+function box(w,h,d,mat,x,y,z,group=scene){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;group.add(m);return m}
+function cylinder(rt,rb,h,mat,x,y,z,group=scene){const m=new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,20),mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;group.add(m);return m}
+function line(x1,y1,z1,x2,y2,z2,color=0xe9b74e,r=.045){const a=new THREE.Vector3(x1,y1,z1),b=new THREE.Vector3(x2,y2,z2),dir=new THREE.Vector3().subVectors(b,a);const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,dir.length(),8),new THREE.MeshStandardMaterial({color}));m.position.copy(a).add(b).multiplyScalar(.5);m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),dir.normalize());scene.add(m);return m}
+// Factory perimeter, windows and roof beams
+box(36,5,.45,mats.wall,0,2.5,-16);
+box(.45,5,32,mats.wall,-18,2,0);
+box(.45,5,32,mats.wall,18,2,0);
+for(let x=-15;x<=15;x+=6){box(.25,5,.35,mats.steel,x,2.5,-15.7);box(.2,.2,31,mats.steel,x,4.7,0)}
+for(let x=-14;x<=14;x+=7){box(4,1.5,.12,mats.cyan,x,3.1,-15.73);box(4,.12,.14,mats.steel,x,3.9,-15.7)}
+// Yellow aisle markings
+for(let z=-12;z<=12;z+=3){box(.08,.018,1.6,mats.yellow,-5,0.025,z);box(.08,.018,1.6,mats.yellow,5,0.025,z)}
+// Machine stations
+function machine(x,z,color=0x4b7886){
+ const g=new THREE.Group();scene.add(g);
+ box(2.4,1.4,1.8,new THREE.MeshStandardMaterial({color,metalness:.35,roughness:.55}),x,1.0,z,g);
+ box(1.55,.65,.12,mats.dark,x,1.35,z+.96,g);
+ box(.55,.18,.08,mats.cyan,x-.4,1.5,z+1.04,g);
+ box(.25,.25,.08,mats.yellow,x+.45,1.5,z+1.04,g);
+ box(2.7,.12,2.05,mats.steel,x,1.78,z,g);
+ for(let xx of [x-1,x+1]){cylinder(.1,.1,.12,mats.dark,xx,1.86,z,g)}
+ box(2.6,.18,2.1,mats.dark,x,.22,z,g);
+ for(let xx of [x-.8,x+.8])for(let zz of [z-.6,z+.6])cylinder(.11,.11,.16,mats.rubber,xx,.12,zz,g);
+ return g;
+}
+machine(-11,-5,0x477783);machine(10,-5,0x5a707b);machine(-11,5,0x687f87);machine(11,5,0x4d7b70);
+// Pallets and stacked crates
+function crate(x,y,z,size=1.15){box(size,.12,size,mats.yellow,x,y-.45,z);box(size*.9,size*.8,size*.9,new THREE.MeshStandardMaterial({color:0x8d6746,roughness:.9}),x,y,z);for(let i=-1;i<=1;i+=2)box(.06,size*.75,.04,mats.steel,x+i*size*.25,y,z+size*.46)}
+crate(-14,0.9,10);crate(-12.7,.9,10);crate(-14,2.0,10);
+// Safety railing and exit door
+for(let z=-2;z<=2;z+=2){line(14,.3,z,14,1.1,z,0xf0b940,.055)}line(14,1.1,-2,14,1.1,2,0xf0b940,.055);line(14,.55,-2,14,.55,2,0xf0b940,.035);
+box(2.5,3,.18,mats.green,0,1.5,-15.6);box(1.5,.18,.2,mats.white,0,2.3,-15.45);
+const exitLabel=document.createElement('canvas');exitLabel.width=256;exitLabel.height=64;const ctx=exitLabel.getContext('2d');ctx.fillStyle='#1b7047';ctx.fillRect(0,0,256,64);ctx.fillStyle='white';ctx.font='bold 30px Arial';ctx.textAlign='center';ctx.fillText('EMERGENCY EXIT',128,42);const exitTex=new THREE.CanvasTexture(exitLabel);const exitSign=new THREE.Mesh(new THREE.PlaneGeometry(2.2,.55),new THREE.MeshBasicMaterial({map:exitTex}));exitSign.position.set(0,3.1,-15.45);scene.add(exitSign);
+// Overhead pipework
+for(let x of [-7,0,7]){line(x,4.3,-13,x,4.3,12,0x4b9eaa,.12);for(let z=-10;z<=10;z+=5)line(x,4.3,z,x,4.8,z,0x71838c,.055)}
+// Hazard marker system
+const hazards=[
+{id:'spill',name:'Oil spill',short:'Slip hazard',icon:'💧',position:[-2,.08,1],description:'A slippery liquid spill is present in the main walkway.',action:'Keep people away, alert the supervisor, and follow site spill-cleanup procedures using the correct PPE and spill kit.',question:'What is the safest first response to an oil spill?',options:['Walk through it carefully','Isolate the area and report it','Cover it with loose paper','Ignore it if it is small'],correct:1,explain:'Isolate the area to prevent slips, then report it and follow the approved cleanup procedure.'},
+{id:'cable',name:'Loose electrical cable',short:'Trip / electrical risk',icon:'⚡',position:[6,.08,1],description:'A loose cable crosses a pedestrian route near a machine.',action:'Do not touch damaged electrical equipment. Keep clear, warn others, and report it to an authorised person for safe isolation and repair.',question:'A cable is damaged and crossing a walkway. What should you do?',options:['Move it while the machine runs','Tape it down yourself','Keep clear and report it','Step over it repeatedly'],correct:2,explain:'Damaged electrical equipment should be kept clear and reported for authorised isolation and repair.'},
+{id:'ppe',name:'Missing PPE',short:'Personal protection',icon:'🦺',position:[-7,.1,-1],description:'A work station is marked for eye and hearing protection, but PPE is missing.',action:'Stop before entering the controlled work area. Obtain the required, correctly fitted PPE and follow the station safety rules.',question:'Before entering a marked machine zone, what should a worker do?',options:['Wear the required PPE','Enter quickly without PPE','Use another worker’s damaged PPE','Rely only on warning lights'],correct:0,explain:'Use the required, correctly fitted PPE before entering the controlled work area.'},
+{id:'crate',name:'Unstable stacked boxes',short:'Falling-object risk',icon:'📦',position:[-13,.1,10],description:'Boxes are stacked unevenly and may fall into the nearby route.',action:'Keep clear and notify the responsible person. The stack should be restacked securely using the site’s manual-handling rules.',question:'You notice an unstable stack of boxes. What is the best response?',options:['Pull the bottom box out','Stand beside it and continue','Warn others and report it','Climb onto the stack'],correct:2,explain:'Keep people clear and report the unstable load so it can be secured using approved procedures.'}
+];
+const hazardObjects=new Map();const raycaster=new THREE.Raycaster();const pointer=new THREE.Vector2();let selectedId=null;let inspected=new Set();let acted=new Set();let quizStarted=false;let quizIndex=0;let quizCorrect=0;let quizAnswers=[];let trainingStarted=false;let toastTimer;
+function makeHazard(h){
+ const group=new THREE.Group();group.position.set(...h.position);scene.add(group);
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(.62,.045,8,36),new THREE.MeshBasicMaterial({color:0xffbf47}));ring.rotation.x=Math.PI/2;ring.position.y=.08;group.add(ring);
+ const core=new THREE.Mesh(new THREE.SphereGeometry(.22,20,14),new THREE.MeshStandardMaterial({color:0xffbf47,emissive:0x9c4b08,emissiveIntensity:1.6}));core.position.y=.55;core.castShadow=true;group.add(core);
+ const stem=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,.34,8),mats.yellow);stem.position.y=.31;group.add(stem);
+ const badgeCanvas=document.createElement('canvas');badgeCanvas.width=256;badgeCanvas.height=72;const c=badgeCanvas.getContext('2d');c.fillStyle='#17232c';c.strokeStyle='#ffbf47';c.lineWidth=4;c.beginPath();c.roundRect(3,3,250,66,14);c.fill();c.stroke();c.fillStyle='#fff4d4';c.font='bold 25px Arial';c.textAlign='center';c.fillText(h.name.toUpperCase(),128,46);const tex=new THREE.CanvasTexture(badgeCanvas);const label=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,depthTest:false}));label.scale.set(2.25,.63,1);label.position.y=1.25;group.add(label);
+ group.userData.hazardId=h.id;hazardObjects.set(h.id,{group,ring,core,label});return group;
+}
+hazards.forEach(makeHazard);
+const controls={keys:{},yaw:0,pitch:-.08,dragging:false,lastX:0,lastY:0};
+camera.position.set(0,2.2,11);controls.yaw=0;
+function updateCamera(){camera.rotation.order='YXZ';camera.rotation.y=controls.yaw;camera.rotation.x=controls.pitch}
+function toast(msg){const el=document.querySelector('#toast');el.textContent=msg;el.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.style.display='none',2600)}
+function selectHazard(id){selectedId=id;const h=hazards.find(x=>x.id===id);if(!h)return;const done=inspected.has(id);document.querySelector('#selectedCard').innerHTML=`<h4>${h.icon} ${h.name}</h4><p>${h.description}</p><p class="tip">${done?'✓ Hazard identified.':'Inspect this hazard, then record your finding.'}</p>`;document.querySelector('#identifyBtn').disabled=done;document.querySelector('#actionBtn').disabled=!done||acted.has(id);document.querySelector('#modePill').textContent='INSPECTING: '+h.name.toUpperCase();renderHazardList();hazardObjects.forEach((o,key)=>{o.ring.material.color.set(key===id?0x51d6d0:(inspected.has(key)?0x72e0a1:0xffbf47));o.core.material.color.set(key===id?0x51d6d0:(inspected.has(key)?0x72e0a1:0xffbf47));o.core.material.emissive.set(key===id?0x126d70:(inspected.has(key)?0x174e2e:0x9c4b08));});}
+function renderHazardList(){const list=document.querySelector('#hazardList');list.innerHTML='';hazards.forEach(h=>{const el=document.createElement('button');el.className='hazard-item'+(inspected.has(h.id)?' done':'');el.style.textAlign='left';el.innerHTML=`<span class="hazard-icon">${h.icon}</span><span><strong>${h.name}</strong><small>${h.short}</small></span><span class="state">${inspected.has(h.id)?'FOUND':'TO FIND'}</span>`;el.addEventListener('click',()=>{selectHazard(h.id);focusHazard(h.id)});list.appendChild(el)})}
+function focusHazard(id){const h=hazards.find(x=>x.id===id);if(!h)return;const [x,,z]=h.position;const target=new THREE.Vector3(x,1,z);const direction=new THREE.Vector3().subVectors(target,camera.position);controls.yaw=Math.atan2(-direction.x,-direction.z);controls.pitch=-.08;updateCamera();toast('Hazard selected: '+h.name)}
+function updateProgress(){const found=inspected.size;document.querySelector('#foundCount').textContent=`${found}/${hazards.length}`;const pct=Math.round(found/hazards.length*100);document.querySelector('#progressText').textContent=pct+'%';document.querySelector('#progressBar').style.width=pct+'%';const quizPct=quizStarted&&quizAnswers.length===hazards.length?Math.round(quizCorrect/hazards.length*100):0;const total=Math.round((found/hazards.length*.6)+(quizAnswers.length/hazards.length*.4))*100;document.querySelector('#score').textContent=(quizAnswers.length===hazards.length?Math.round(found/hazards.length*60+quizCorrect/hazards.length*40):Math.round(found/hazards.length*100))+'%';}
+document.querySelector('#identifyBtn').addEventListener('click',()=>{if(!selectedId)return;inspected.add(selectedId);selectHazard(selectedId);updateProgress();toast('Hazard identified. Review the recommended safety action.')});
+document.querySelector('#actionBtn').addEventListener('click',()=>{if(!selectedId)return;const h=hazards.find(x=>x.id===selectedId);if(!h)return;acted.add(selectedId);document.querySelector('#selectedCard').innerHTML=`<h4>Recommended response</h4><p>${h.action}</p><p class="tip">Follow your workplace procedures and supervisor instructions.</p>`;document.querySelector('#actionBtn').disabled=true;toast('Safety instruction reviewed.')});
+document.querySelector('#startBtn').addEventListener('click',()=>{trainingStarted=true;document.querySelector('#welcome').style.display='none';canvas.focus();toast('Training session started. Inspect all four hazards.')});
+document.querySelector('#resetBtn').addEventListener('click',()=>{inspected.clear();acted.clear();selectedId=null;quizStarted=false;quizIndex=0;quizCorrect=0;quizAnswers=[];trainingStarted=false;document.querySelector('#quizArea').innerHTML='<p class="tiny">Complete the quiz to test your safety decisions.</p><button class="primary full" id="beginQuiz">Begin 4-question quiz</button>';document.querySelector('#beginQuiz').addEventListener('click',startQuiz);document.querySelector('#selectedCard').innerHTML='<h4>Choose a hazard</h4><p>Click a glowing marker in the factory or select a checklist item.</p>';document.querySelector('#identifyBtn').disabled=true;document.querySelector('#actionBtn').disabled=true;document.querySelector('#modePill').textContent='EXPLORATION MODE';renderHazardList();updateProgress();document.querySelector('#welcome').style.display='grid';toast('Session reset.')});
+document.querySelector('#enterBtn').addEventListener('click',()=>{document.querySelector('#welcome').style.display='none';trainingStarted=true;toast('Welcome. Start by selecting a glowing hazard.')});
+document.querySelector('#skipIntro').addEventListener('click',()=>{document.querySelector('#welcome').querySelector('h2').textContent='Controls';document.querySelector('#welcome').querySelector('p').textContent='Move with WASD, drag the mouse to look around, and click the glowing hazard markers to inspect them.';document.querySelector('#welcome').querySelector('ul').innerHTML='<li>Click a hazard in the scene or the checklist.</li><li>Identify each hazard to record it.</li><li>Review the recommended safety action.</li><li>Open the Safety quiz tab to finish.</li>';});
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b===btn));document.querySelectorAll('.content').forEach(c=>c.classList.toggle('active',c.id===btn.dataset.tab+'Content'))}));
+function startQuiz(){quizStarted=true;quizIndex=0;quizCorrect=0;quizAnswers=[];renderQuiz()}
+document.querySelector('#beginQuiz').addEventListener('click',startQuiz);
+function renderQuiz(){const area=document.querySelector('#quizArea');if(quizIndex>=hazards.length){area.innerHTML=`<h3>Quiz complete</h3><div class="metric"><small>Quiz result</small><strong>${quizCorrect}/${hazards.length} · ${Math.round(quizCorrect/hazards.length*100)}%</strong></div><p style="margin-top:10px">You completed the safety assessment. Review any missed answers and repeat the session to improve your score.</p><button class="primary full" id="retryQuiz">Try quiz again</button>`;document.querySelector('#retryQuiz').addEventListener('click',startQuiz);updateProgress();return}
+const h=hazards[quizIndex];area.innerHTML=`<p class="tiny">QUESTION ${quizIndex+1} OF ${hazards.length}</p><div class="quiz-q">${h.question}</div><div id="answers"></div><div class="feedback" id="quizFeedback"></div><button class="primary full hidden" id="nextQuestion">${quizIndex===hazards.length-1?'View result':'Next question'}</button>`;
+const answers=area.querySelector('#answers');h.options.forEach((opt,i)=>{const b=document.createElement('button');b.className='answer';b.textContent=String.fromCharCode(65+i)+'. '+opt;b.addEventListener('click',()=>answerQuestion(i,b));answers.appendChild(b)})}
+function answerQuestion(index,button){if(quizAnswers[quizIndex]!==undefined)return;const h=hazards[quizIndex];quizAnswers[quizIndex]=index;if(index===h.correct)quizCorrect++;document.querySelectorAll('#answers .answer').forEach((b,i)=>{b.disabled=true;if(i===h.correct)b.classList.add('correct');else if(i===index)b.classList.add('wrong')});document.querySelector('#quizFeedback').textContent=(index===h.correct?'Good decision. ':'Review this response. ')+h.explain;document.querySelector('#nextQuestion').classList.remove('hidden');updateProgress();document.querySelector('#nextQuestion').addEventListener('click',()=>{quizIndex++;renderQuiz()},{once:true})}
+// Scene interaction: click marker; drag to look around
+canvas.addEventListener('pointerdown',e=>{controls.dragging=true;controls.lastX=e.clientX;controls.lastY=e.clientY;canvas.setPointerCapture?.(e.pointerId)});
+canvas.addEventListener('pointerup',e=>{controls.dragging=false;const rect=canvas.getBoundingClientRect();pointer.x=((e.clientX-rect.left)/rect.width)*2-1;pointer.y=-((e.clientY-rect.top)/rect.height)*2+1;raycaster.setFromCamera(pointer,camera);const targets=[];hazardObjects.forEach(o=>{o.group.traverse(obj=>{if(obj.isMesh||obj.isSprite)targets.push(obj)})});const hits=raycaster.intersectObjects(targets,false);if(hits.length){let obj=hits[0].object;while(obj&&!obj.userData.hazardId&&obj.parent)obj=obj.parent;const id=obj?.userData?.hazardId||hits[0].object.parent?.userData?.hazardId;if(id){selectHazard(id);return}}});
+canvas.addEventListener('pointermove',e=>{if(!controls.dragging)return;const dx=e.clientX-controls.lastX,dy=e.clientY-controls.lastY;controls.lastX=e.clientX;controls.lastY=e.clientY;if(e.buttons===1){controls.yaw-=dx*.005;controls.pitch=Math.max(-.9,Math.min(.65,controls.pitch-dy*.004));updateCamera()}});
+window.addEventListener('keydown',e=>{const key=e.key.toLowerCase();if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(key)){controls.keys[key]=true;if(document.activeElement===canvas)e.preventDefault()}});
+window.addEventListener('keyup',e=>{controls.keys[e.key.toLowerCase()]=false});
+function moveCamera(dt){const k=controls.keys;const forward=(k.w||k.arrowup?1:0)-(k.s||k.arrowdown?1:0);const side=(k.d||k.arrowright?1:0)-(k.a||k.arrowleft?1:0);if(!forward&&!side)return;const speed=dt*5;const fwd=new THREE.Vector3(-Math.sin(controls.yaw),0,-Math.cos(controls.yaw));const right=new THREE.Vector3(Math.cos(controls.yaw),0,-Math.sin(controls.yaw));camera.position.addScaledVector(fwd,forward*speed);camera.position.addScaledVector(right,side*speed);camera.position.x=THREE.MathUtils.clamp(camera.position.x,-16,16);camera.position.z=THREE.MathUtils.clamp(camera.position.z,-14,14);camera.position.y=2.2}
+function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
+window.addEventListener('resize',resize);resize();renderHazardList();updateProgress();
+let previous=performance.now();
+function animate(now){requestAnimationFrame(animate);const dt=Math.min((now-previous)/1000,.05);previous=now;moveCamera(dt);hazardObjects.forEach((o,id)=>{o.ring.rotation.z+=dt*.25;o.core.position.y=.55+Math.sin(now*.0025+(id.length))*0.08;o.label.material.rotation=0});renderer.render(scene,camera)}
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>
